@@ -1,14 +1,12 @@
-const Button = (props) => {
-  console.log(props);
+const Button = ({children, text, color = "black"}) => {
   return (
-    <button style={{ color: props.color }}>
-      {props.text} - {props.color.toUpperCase()}
+    <button style={{ color: color }}>
+      {text} - {color.toUpperCase()}
+      {children}
     </button>
   );
 };
 
-Button.defaultProps = {
-  color: "black",
-};
+
 
 export default Button;
