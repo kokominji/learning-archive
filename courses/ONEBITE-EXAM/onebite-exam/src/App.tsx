@@ -1,10 +1,9 @@
 import "./App.css";
-import TodoListPage from "./pages/todo-list-page";
-
+import { GradeRanking } from "./pages/gradeRanking";
 function App() {
   return (
     <div>
-      <TodoListPage />
+      <GradeRanking />
     </div>
   );
 }

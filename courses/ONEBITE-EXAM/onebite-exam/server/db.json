@@ -1,24 +1,50 @@
 {
-  "todos": [
+  "scores": [
     {
       "id": "1",
-      "content": "Todo 1",
-      "isDone": true
+      "subject": "수학",
+
+      "score": 99
     },
     {
       "id": "2",
-      "content": "Todo 2",
-      "isDone": true
+      "subject": "국어",
+
+      "score": 84
     },
     {
       "id": "3",
-      "content": "Todo 3",
-      "isDone": true
+      "subject": "영어",
+
+      "score": 37
     },
     {
-      "id": "2299",
-      "content": "ㄴㄴㄴ",
-      "isDone": false
+      "id": "4",
+      "subject": "사회",
+
+      "score": 68
+    },
+    {
+      "id": "5",
+      "subject": "체육",
+
+      "score": 21
+    },
+    {
+      "id": "6",
+      "subject": "도덕",
+
+      "score": 40
+    },
+    {
+      "id": "7",
+      "subject": "미술",
+      "score": 55
     }
-  ]
+  ],
+  "progress": {
+    "korean": 75,
+    "english": 55,
+    "math": 25
+  }
 }
