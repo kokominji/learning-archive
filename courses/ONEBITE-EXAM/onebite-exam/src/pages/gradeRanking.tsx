@@ -22,17 +22,18 @@ const Wrapper = styled.div`
   max-height: 200px;
   max-width: "50%";
   overflow-y: auto;
-  border: 1px solid;
-  border-radius: 16px;
+  border: 1px solid; //색상추가
+  border-radius: 12px;
 `;
 
 const Card = styled.div`
   width: 100px;
+  
   display: flex;
   flex-direction: column;
   padding: 16px;
   border: 1px solid;
-  border-radius: 16px;
+  border-radius: 14px;
 `;
 
 const Subject = styled.div`
