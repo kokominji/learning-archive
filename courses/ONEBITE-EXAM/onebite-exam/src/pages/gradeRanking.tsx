@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 
 const Card = styled.div`
   width: 100px;
-  
+
   display: flex;
   flex-direction: column;
   padding: 16px;
