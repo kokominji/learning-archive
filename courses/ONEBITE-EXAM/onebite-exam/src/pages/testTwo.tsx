@@ -61,7 +61,8 @@ export const TestTwo = () => {
 
   return (
     <S.Container>
-      <label style={{ fontSize: "25px", fontWeight: "bold" }}>성적 순위</label>
+      <S.Label>성적 순위</S.Label>
+      <S.Span>◆</S.Span>
       <S.RankWrapper>
         {info
           .sort((a, b) => b.score - a.score)
@@ -72,7 +73,8 @@ export const TestTwo = () => {
             </S.Card>
           ))}
       </S.RankWrapper>
-      <label style={{ fontSize: "25px", fontWeight: "bold" }}>성적 집계</label>
+      <S.Label>성적 집계</S.Label>
+      <S.Span>◆</S.Span>
       <S.TotalWrapper>
         <S.TotalMain>합계</S.TotalMain>
         <S.TotalSub>{totalScore}점</S.TotalSub>
@@ -90,7 +92,8 @@ export const TestTwo = () => {
         <S.TotalSub>{maxScore}점</S.TotalSub>
       </S.TotalWrapper>
 
-      <label style={{ fontSize: "25px", fontWeight: "bold" }}>진도율</label>
+      <S.Label>진도율</S.Label>
+      <S.Span>◆</S.Span>
 
       <S.RateWrapper>
         {info
@@ -106,7 +109,7 @@ export const TestTwo = () => {
           ))}
       </S.RateWrapper>
 
-      {/* <label style={{ fontSize: "25px", fontWeight: "bold" }}>단위</label>
+      {/* <S.Label>단위</S.Label><S.Span>◆</S.Span>
       {lenType.map((unit) => (
         <div key={unit.unitId}>
           길이:

@@ -5,6 +5,18 @@ export const Container = styled.div`
   display: column;
 `;
 
+export const Label = styled.label`
+  fontsize: 25px;
+  fontweight: bold;
+`;
+
+export const Span = styled.span`
+  color: red;
+  top: -10px;
+  left: 3px;
+  position: relative;
+  font-size: 10px;
+`;
 // region 성적 순위
 export const RankWrapper = styled.div`
   display: flex;
