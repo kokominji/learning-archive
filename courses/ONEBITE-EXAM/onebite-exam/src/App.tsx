@@ -1,9 +1,9 @@
 import "./App.css";
-import { GradeRanking } from "./pages/gradeRanking";
+import { TestTwo } from "./pages/testTwo";
 function App() {
   return (
     <div>
-      <GradeRanking />
+      <TestTwo />
     </div>
   );
 }
