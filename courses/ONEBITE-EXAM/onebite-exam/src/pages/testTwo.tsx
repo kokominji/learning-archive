@@ -68,7 +68,8 @@ export const TestTwo = () => {
           .sort((a, b) => b.score - a.score)
           .map((item) => (
             <S.Card key={item.id}>
-              <S.Score $color={subjectColor(item.type)}>{item.score}</S.Score>
+              <S.Score>{item.score}</S.Score>
+              <S.Circle $color={subjectColor(item.type)}></S.Circle>
               <S.Subject>{item.subject}</S.Subject>
             </S.Card>
           ))}

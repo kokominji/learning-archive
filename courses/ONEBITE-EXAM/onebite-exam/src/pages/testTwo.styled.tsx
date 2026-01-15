@@ -41,13 +41,17 @@ export const Card = styled.div`
   border-radius: 16px;
   position: relative;
 `;
-
-export const Subject = styled.div<{ $color: string }>`
+export const Circle = styled.div<{ $color: string }>`
+  width: 80px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: ${(p) => p.$color};
+`;
+export const Subject = styled.div`
   font-size: 15px;
   position: absolute;
   bottom: 8px;
   right: 8px;
-  background-color: ${(p) => p.color};
 `;
 
 export const Score = styled.div`
