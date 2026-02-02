@@ -11,9 +11,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@faker-js/faker": "github:faker-js/faker",
     "@tanstack/react-query": "^5.90.16",
+    "faker-js": "^1.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.71.1",
+    "rsuite": "^6.1.2",
     "styled-components": "^6.3.6"
   },
   "devDependencies": {

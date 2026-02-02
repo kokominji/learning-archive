@@ -1,16 +1,42 @@
-import { useState } from "react";
+import { CheckTree, CheckTreePicker } from "rsuite";
+import { MockTreeData } from "./mock";
+import { useRef, useState } from "react";
+import "rsuite/CheckTree/styles/index.css";
 
-export const Test = () => {
-  const [countState, setCountState] = useState<number>(0);
+export const Example = () => {
+  const [checkedValues, setCheckedValues] = useState<(string | number)[]>([]);
 
-  const onCount = () => {
-    setCountState((prev) => prev + 1);
+  const chkRef = useRef(null);
+
+  console.log("checkedValues", checkedValues);
+
+  const onClick = (e: any) => {
+    console.log("e", e);
+    if (e.target.className === "rs-checkbox-label") e.preventDefault();
   };
 
   return (
-    <div>
-      <div>{countState}</div>
-      <button onClick={onCount}>선택</button>
-    </div>
+    <CheckTree
+      ref={chkRef}
+      data={MockTreeData}
+      value={checkedValues}
+      defaultExpandAll
+      //   cascade={false}
+      onClick={onClick}
+      onSelect={(node) => {
+        // console.log('', )
+        // console.log("chkRef.current", chkRef.current);
+        console.log("node.children", node.children);
+        console.log("node", node);
+        return {
+          value: node.value,
+          label: node.label,
+          parent: node.parent?.value,
+          count: node.count,
+          //   check: node.checkState == 0 ? false : true,
+        };
+      }}
+      onChange={setCheckedValues}
+    />
   );
 };

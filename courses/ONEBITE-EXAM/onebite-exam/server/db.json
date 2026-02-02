@@ -1,50 +1,72 @@
 {
-  "scores": [
+  "Data": [
     {
-      "id": "1",
-      "subject": "수학",
-
-      "score": 99
+      "label": "차량",
+      "value": "vehicle",
+      "children": [
+        {
+          "label": "전기차",
+          "value": "electric",
+          "children": [
+            {
+              "label": "테슬라 Model S",
+              "value": "tesla-model-s"
+            },
+            {
+              "label": "테슬라 Model 3",
+              "value": "tesla-model-3"
+            }
+          ]
+        },
+        {
+          "label": "내연기관",
+          "value": "combustion",
+          "children": [
+            {
+              "label": "BMW 5시리즈",
+              "value": "bmw-5series"
+            },
+            {
+              "label": "벤츠 E클래스",
+              "value": "benz-eclass"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "2",
-      "subject": "국어",
-
-      "score": 84
-    },
-    {
-      "id": "3",
-      "subject": "영어",
-
-      "score": 37
-    },
-    {
-      "id": "4",
-      "subject": "사회",
-
-      "score": 68
-    },
-    {
-      "id": "5",
-      "subject": "체육",
-
-      "score": 21
-    },
-    {
-      "id": "6",
-      "subject": "도덕",
-
-      "score": 40
-    },
-    {
-      "id": "7",
-      "subject": "미술",
-      "score": 55
+      "label": "부품",
+      "value": "parts",
+      "children": [
+        {
+          "label": "엔진",
+          "value": "engine",
+          "children": [
+            {
+              "label": "가솔린 엔진",
+              "value": "gasoline-engine"
+            },
+            {
+              "label": "디젤 엔진",
+              "value": "diesel-engine"
+            }
+          ]
+        },
+        {
+          "label": "타이어",
+          "value": "tire",
+          "children": [
+            {
+              "label": "여름용 타이어",
+              "value": "summer-tire"
+            },
+            {
+              "label": "겨울용 타이어",
+              "value": "winter-tire"
+            }
+          ]
+        }
+      ]
     }
-  ],
-  "progress": {
-    "korean": 75,
-    "english": 55,
-    "math": 25
-  }
+  ]
 }
