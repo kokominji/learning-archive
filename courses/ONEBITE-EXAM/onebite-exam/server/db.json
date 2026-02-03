@@ -1,34 +1,32 @@
 {
   "Data": [
     {
+      "count": 1,
       "label": "차량",
       "value": "vehicle",
       "children": [
         {
-          "label": "전기차",
-          "value": "electric",
+          "label": "테슬라",
+          "value": "tesla",
           "children": [
             {
-              "label": "테슬라 Model S",
-              "value": "tesla-model-s"
+              "label": "바퀴",
+              "value": "tWheels",
+              "count": "5"
             },
             {
-              "label": "테슬라 Model 3",
-              "value": "tesla-model-3"
+              "label": "문",
+              "value": "tDoor"
             }
           ]
         },
         {
-          "label": "내연기관",
-          "value": "combustion",
+          "label": "BMW",
+          "value": "bmw",
           "children": [
             {
-              "label": "BMW 5시리즈",
-              "value": "bmw-5series"
-            },
-            {
-              "label": "벤츠 E클래스",
-              "value": "benz-eclass"
+              "label": "바퀴",
+              "value": "wheels"
             }
           ]
         }

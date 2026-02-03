@@ -1,42 +1,72 @@
-import { CheckTree, CheckTreePicker } from "rsuite";
-import { MockTreeData } from "./mock";
-import { useRef, useState } from "react";
+import { CheckTree } from "rsuite";
+// import { MockTreeData } from "./mock";
+import { useEffect, useRef, useState } from "react";
 import "rsuite/CheckTree/styles/index.css";
 
 export const Example = () => {
-  const [checkedValues, setCheckedValues] = useState<(string | number)[]>([]);
+  const [checkedValuesState, setCheckedValuesState] = useState<
+    (string | number)[]
+  >([]); //체크박스
+  const [treeDataState, setTreeDataState] = useState<any[]>([]);
 
-  const chkRef = useRef(null);
+  const treeDataRef = useRef(null);
 
-  console.log("checkedValues", checkedValues);
+  useEffect(() => {
+    const fetchTreeData = async () => {
+      const response = await fetch("http://localhost:3000/Data");
+      const data = await response.json();
+      console.log("data", data);
+      setTreeDataState(data);
+    };
+    fetchTreeData();
+  }, []);
+
+  const findNodeByValue = (data: any[], Value: string): any => {
+    for (const node of data) {
+      if (node.refKey === Value) {
+        console.log("node.refKey", node.refKey);
+        return node;
+      }
+      if (node.children) {
+        const childrenNode = findNodeByValue(node.children, Value);
+        if (childrenNode) return childrenNode;
+      }
+    }
+    return null;
+  };
 
   const onClick = (e: any) => {
-    console.log("e", e);
-    if (e.target.className === "rs-checkbox-label") e.preventDefault();
+    if (e.target.className === "rs-checkbox-label") {
+      e.preventDefault();
+      console.log("e", e);
+
+      const nodeValue = e.target
+        .closest(".rs-check-tree-node")
+        ?.querySelector("input")?.value;
+
+      console.log("nodeValue", nodeValue);
+
+      if (nodeValue) {
+        const nodeData = findNodeByValue(treeDataState, nodeValue);
+        // console.log("전체 노드 데이터:", nodeData);
+        // const dataId = e.target.ownerDocument.activeElement.value;
+        // console.log("dataId", dataId);
+
+        // treeDataRef.current = findNodeById(treeData, dataId);
+        // console.log("treeDataRef.current", treeDataRef.current);
+      }
+    }
   };
 
   return (
     <CheckTree
-      ref={chkRef}
-      data={MockTreeData}
-      value={checkedValues}
+      ref={treeDataRef}
+      data={treeDataState}
+      value={checkedValuesState}
       defaultExpandAll
-      //   cascade={false}
       onClick={onClick}
-      onSelect={(node) => {
-        // console.log('', )
-        // console.log("chkRef.current", chkRef.current);
-        console.log("node.children", node.children);
-        console.log("node", node);
-        return {
-          value: node.value,
-          label: node.label,
-          parent: node.parent?.value,
-          count: node.count,
-          //   check: node.checkState == 0 ? false : true,
-        };
-      }}
-      onChange={setCheckedValues}
+      onChange={setCheckedValuesState}
+      height={500}
     />
   );
 };
