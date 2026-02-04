@@ -1,9 +1,9 @@
 {
   "Data": [
     {
-      "count": 1,
       "label": "차량",
       "value": "vehicle",
+      "count": 1,
       "children": [
         {
           "label": "테슬라",
@@ -12,7 +12,7 @@
             {
               "label": "바퀴",
               "value": "tWheels",
-              "count": "5"
+              "count": 5
             },
             {
               "label": "문",
