@@ -16,7 +16,25 @@
             },
             {
               "label": "문",
-              "value": "tDoor"
+              "value": "tDoor",
+              "children": [
+                {
+                  "label": "유리",
+                  "value": "glass",
+                  "children": [
+                    {
+                      "label": "물",
+                      "value": "water",
+                      "children": [
+                        {
+                          "label": "공기",
+                          "value": "air"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

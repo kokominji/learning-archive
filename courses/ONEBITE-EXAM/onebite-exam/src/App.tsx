@@ -1,11 +1,12 @@
 import "./App.css";
-// import { TestTwo } from "./pages/mock";
-import { Example } from "./pages/test";
+import { Example } from "./pages/checkTree";
+import { Search } from "./pages/search";
 
 function App() {
   return (
     <div>
       <Example />
+      <Search />
     </div>
   );
 }
