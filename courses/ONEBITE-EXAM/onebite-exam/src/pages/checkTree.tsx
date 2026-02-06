@@ -92,17 +92,27 @@ export const Example = () => {
       e.preventDefault();
 
       const checkType = e.target.checked as TChecked;
-      const checkedType = (type: TChecked) => {
+      const checkedType = (type: TChecked): any[] => {
         switch (type) {
           case "false":
             return [...checkedNodeRef.current, ...leafNode];
           case "true":
-            return (checkedNodeRef.current = checkedNodeRef.current.filter(
+            return checkedNodeRef.current.filter(
               (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
-            ));
+            );
           case "mixed":
+            return [
+              ...checkedNodeRef.current,
+              ...leafNode.filter((item) => item.checkType === false),
+            ];
+          default:
+            return checkedNodeRef.current;
         }
       };
+      checkedNodeRef.current = checkedType(checkType);
+      setCheckedValuesState(checkedNodeRef.current.map((node) => node.refKey));
+      console.log("checkedNodeRef.current", checkedNodeRef.current);
+      console.log(" checkedNodeRef.current", checkedNodeRef.current);
       // const existingIndex = checkedNodeRef.current.findIndex((node) =>
       //   leafNode.some((item) => item.refKey === node.refKey),
       // );
