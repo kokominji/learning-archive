@@ -18,6 +18,8 @@ export const Example = () => {
   const labelDataRef = useRef(null);
   const checkedNodeRef = useRef<any[]>([]);
 
+  type TChecked = "true" | "false" | "mixed";
+
   // type MyNode = {
   //   // 필요하면 커스텀 필드 추가
   //   id?: string;
@@ -88,36 +90,49 @@ export const Example = () => {
       // 체크박스 클릭시
     } else if (e.target.type === "checkbox") {
       e.preventDefault();
-      const existingIndex = checkedNodeRef.current.findIndex((node) =>
-        leafNode.some((item) => item.refKey === node.refKey),
-      );
-      console.log("existingIndex", existingIndex);
 
-      if (existingIndex === -1) {
-        console.log(" leafNode", leafNode);
-        checkedNodeRef.current = [
-          ...checkedNodeRef.current,
-          ...leafNode.filter(
-            (node) =>
-              !checkedNodeRef.current.some(
-                (item) => item.refKey === node.refKey,
-              ),
-          ),
-        ];
-      } else {
-        checkedNodeRef.current = checkedNodeRef.current.filter(
-          (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
-        );
-      }
+      const checkType = e.target.checked as TChecked;
+      const checkedType = (type: TChecked) => {
+        switch (type) {
+          case "false":
+            return [...checkedNodeRef.current, ...leafNode];
+          case "true":
+            return (checkedNodeRef.current = checkedNodeRef.current.filter(
+              (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
+            ));
+          case "mixed":
+        }
+      };
+      // const existingIndex = checkedNodeRef.current.findIndex((node) =>
+      //   leafNode.some((item) => item.refKey === node.refKey),
+      // );
+      // console.log("existingIndex", existingIndex);
 
-      console.log("checkedNodeRef", checkedNodeRef.current);
+      // if (existingIndex === -1) {
+      //   console.log(" leafNode", leafNode);
+      //   checkedNodeRef.current = [
+      //     ...checkedNodeRef.current,
+      //     ...leafNode.filter(
+      //       (node) =>
+      //         !checkedNodeRef.current.some(
+      //           (item) => item.refKey === node.refKey,
+      //         ),
+      //     ),
+      //   ];
+      // } else {
+      //   checkedNodeRef.current = checkedNodeRef.current.filter(
+      //     (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
+      //   );
+      // }
+
+      // console.log("checkedNodeRef", checkedNodeRef.current);
     }
   };
 
   return (
     <>
       {treeDataState.length > 0 && (
-        <div style={{ width: "30%" }}>
+        <div>
           <CheckTree
             ref={treeDataRef}
             data={treeDataState}
