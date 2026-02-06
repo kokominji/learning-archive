@@ -91,51 +91,52 @@ export const Example = () => {
     } else if (e.target.type === "checkbox") {
       e.preventDefault();
 
-      const checkType = e.target.checked as TChecked;
-      const checkedType = (type: TChecked): any[] => {
-        switch (type) {
-          case "false":
-            return [...checkedNodeRef.current, ...leafNode];
-          case "true":
-            return checkedNodeRef.current.filter(
-              (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
-            );
-          case "mixed":
-            return [
-              ...checkedNodeRef.current,
-              ...leafNode.filter((item) => item.checkType === false),
-            ];
-          default:
-            return checkedNodeRef.current;
-        }
-      };
-      checkedNodeRef.current = checkedType(checkType);
-      setCheckedValuesState(checkedNodeRef.current.map((node) => node.refKey));
-      console.log("checkedNodeRef.current", checkedNodeRef.current);
-      console.log(" checkedNodeRef.current", checkedNodeRef.current);
-      // const existingIndex = checkedNodeRef.current.findIndex((node) =>
-      //   leafNode.some((item) => item.refKey === node.refKey),
-      // );
-      // console.log("existingIndex", existingIndex);
+      const existingIndex = checkedNodeRef.current.findIndex((node) =>
+        leafNode.some((item) => item.refKey === node.refKey),
+      );
+      console.log("existingIndex", existingIndex);
 
-      // if (existingIndex === -1) {
-      //   console.log(" leafNode", leafNode);
-      //   checkedNodeRef.current = [
-      //     ...checkedNodeRef.current,
-      //     ...leafNode.filter(
-      //       (node) =>
-      //         !checkedNodeRef.current.some(
-      //           (item) => item.refKey === node.refKey,
-      //         ),
-      //     ),
-      //   ];
-      // } else {
-      //   checkedNodeRef.current = checkedNodeRef.current.filter(
-      //     (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
-      //   );
-      // }
+      if (existingIndex === -1) {
+        console.log(" leafNode", leafNode);
+        checkedNodeRef.current = [
+          ...checkedNodeRef.current,
+          ...leafNode.filter(
+            (node) =>
+              !checkedNodeRef.current.some(
+                (item) => item.refKey === node.refKey,
+              ),
+          ),
+        ];
+      } else {
+        checkedNodeRef.current = checkedNodeRef.current.filter(
+          (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
+        );
+      }
 
-      // console.log("checkedNodeRef", checkedNodeRef.current);
+      console.log("checkedNodeRef", checkedNodeRef.current);
+
+      // const checkType = e.target.checked as TChecked;
+      // const checkedType = (type: TChecked): any[] => {
+      //   switch (type) {
+      //     case "false":
+      //       return [...checkedNodeRef.current, ...leafNode];
+      //     case "true":
+      //       return checkedNodeRef.current.filter(
+      //         (item) => !leafNode.some((leaf) => leaf.refKey === item.refKey),
+      //       );
+      //     case "mixed":
+      //       return [
+      //         ...checkedNodeRef.current,
+      //         ...leafNode.filter((item) => item.checkType === false),
+      //       ];
+      //     default:
+      //       return checkedNodeRef.current;
+      //   }
+      // };
+      // checkedNodeRef.current = checkedType(checkType);
+      // setCheckedValuesState(checkedNodeRef.current.map((node) => node.refKey));
+      // console.log("checkedNodeRef.current", checkedNodeRef.current);
+      // console.log(" checkedNodeRef.current", checkedNodeRef.current);
     }
   };
 
